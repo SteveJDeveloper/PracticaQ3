@@ -1,0 +1,64 @@
+.player-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.information{
+    background-color: white;
+    width: 50%;
+    margin: 100px;
+
+    &__head{
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+        justify-content: space-between;
+    }
+
+    &__title { 
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    &__close-button{
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: white;
+        border: 0px;
+    }
+
+    &__photo{
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        line-height: 200px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    &__photo-box{
+        color: #fff;
+        width: 200px;
+        height: 200px;
+        background-color: rgb(70, 70, 70);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+    }
+}

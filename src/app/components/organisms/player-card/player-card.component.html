@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card__header">
+        <img class="card__img" src={{playerImg}}>
+        <div class="card__name">
+            {{playerName | uppercase}}
+        </div>
+    </div>
+    <div class="card__body">
+        <div class="card__statics">
+            <div class="card__text">Ataque<br>{{playerAttack}}</div>
+            <div class="card__text">Defensa<br>{{playerDeffense}}</div>
+            <div class="card__text">Skills<br>{{playerSkill}}</div>
+        </div>
+        <div class="card__button-panel">
+            <button class="card__button" (click)="editPlayer()">E</button>
+            <button class="card__button">B</button>
+        </div>
+    </div>
+    
+</div>
+

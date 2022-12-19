@@ -1,0 +1,7 @@
+<div class="header">
+    <div class="header__title">{{titulo | uppercase}}</div>
+    <div class="form">
+        <input class="form__search" type="text" placeholder="Buscar por Nombre" [(ngModel)]="busqueda" (ngModelChange)="sendBusqueda()"/>
+        <button class="form__button" (click)="addPlayer()">Agregar</button>
+    </div>
+</div>
