@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IModal } from 'src/app/utils/interfaces/modal.interface';
 
 @Component({
   selector: 'app-header',
@@ -7,30 +8,30 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   
-  titulo: string = "Mi Equipo";
+  title: string = "Mi Equipo";
   
-  busqueda: string = "";
+  search: string = "";
 
-  @Output() busquedaEvent = new EventEmitter<string>();
+  @Output() searchEvent = new EventEmitter<string>();
 
-  @Output() addEvent = new EventEmitter<any>();
+  @Output() addEvent = new EventEmitter<IModal>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  sendBusqueda(){
-    this.busquedaEvent.emit(this.busqueda);
+  sendSearch(){
+    this.searchEvent.emit(this.search);
   }
 
   addPlayer(){
-    let obj = {
-      player: null,
+    let object: IModal = {
       title: "Agregar Jugador",
+      button: "Agregar",
       flag: true
     }
-    this.addEvent.emit(obj);
+    this.addEvent.emit(object);
   }
 
 }

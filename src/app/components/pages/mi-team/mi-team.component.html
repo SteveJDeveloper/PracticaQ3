@@ -1,14 +1,12 @@
 <div class="mi-team">
-    <div class="mi-team__players">
-        <app-header (busquedaEvent)="searchName($event)" (addEvent)="setModalView($event)"></app-header>
-        <div class="player-list">
+    <div class="mi-team__list">
+        <app-header (searchEvent)="searchName($event)" (addEvent)="setModalView($event)"></app-header>
+        <div class="players-container">
             <app-player-card *ngFor="let player of players"
-                [playerImg]="player.playerImg" [playerName]="player.playerName" 
-                [playerAttack]="player.playerAttack" [playerDeffense]="player.playerDeffense" 
-                [playerSkill]="player.playerSkill" (editEvent)="setModalView($event)"></app-player-card>
+                [player]="player" (editEvent)="setModalView($event)"></app-player-card>
         </div>
     </div>
     <div class="mi-team__form" *ngIf="modalFlag">
-        <app-player-form (closeEvent)="setModalView($event)" [titulo]="tituloModal"></app-player-form>
+        <app-player-form (closeEvent)="setModalView($event)" [modal]="modal"></app-player-form>
     </div>
 </div>

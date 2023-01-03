@@ -1,32 +1,67 @@
-<div class="player-form" >
-    <div class="information">
-        <div class="information__head">
-            <div class="information__title">{{titulo}}</div>
-            <button class="information__close-button" (click)="closeModal()"> X </button>
+<div class="form-container">
+    <div class="form">
+        <div class="form__header">
+            <div class="form__title">{{modal!.title}}</div>
+            <button class="form__close-button" (click)="closeModal()"> X </button>
         </div>
-        <div class="information__body">
-            <div class="information__photo-box">
-                <img class="information__photo" src="" alt="NOT FOUND">
+        <form class="form__body" autocomplete="off" [formGroup]="formReactive" (ngSubmit)="savePlayer()">
+            <div class="form__photo-container">
+                <img class="form__photo" [src]="imgUrl" alt="NOT FOUND">
             </div>
-            <div class="information__form">
-                <div>
-                    <label>Nombre</label><br>
-                    <input type="text" />
+            <div class="input-panel">
+                <div class="input-panel__group">
+                    <label>Nombre</label>
+                    <input type="text" class="input-panel__input" formControlName="name" [class.input-panel__input--invalid]="nameValid"/>
+                    <small *ngIf="nameValid" class="input-panel__input--invalid">Nombre no valido</small>
                 </div>
-                <div>
-                    <label>Apellido</label><br>
-                    <input type="text" />
+                <div class="input-panel__group">
+                    <label>Apellido</label>
+                    <input type="text" class="input-panel__input" formControlName="lastName" [class.input-panel__input--invalid]="lastNameValid"/>
+                    <small *ngIf="lastNameValid" class="input-panel__input--invalid">Apellido no valido</small>
                 </div>
-                <div>
-                    <label>Imagen</label><br>
-                    <input type="text" />
+                <div class="input-panel__group">
+                    <label>Imagen</label>
+                    <input type="text" class="input-panel__input" formControlName="urlImg" [class.input-panel__input--invalid]="urlImgValid" />
+                    <small *ngIf="urlImgValid" class="input-panel__input--invalid">Url no valido</small>
                 </div>
-                <div>
-                    <label>Posición</label><br>
-                    <input type="text" />
+                <div class="input-panel__group">
+                    <label>Posición</label>
+                    <select class="input-panel__select" formControlName="position" [class.input-panel__select--invalid]="positionValid">
+                        <option>Arquero</option>
+                        <option>Defensa</option>
+                        <option>Lateral</option>
+                        <option>Medio Campista</option>
+                        <option>Delantero</option>
+                    </select>
+                    <small *ngIf="positionValid" class="input-panel__input--invalid">Posición no valida</small>
                 </div>
-                
+                <div class="input-panel__skills">
+                    <div class="input-panel__group--alternative">
+                        <label>Ataque</label>
+                        <div class="input-panel__range-container">
+                            <input class="input-panel__range" type="range" min="0" max="100" step="1" formControlName="attack" />
+                            <div>{{attackValue}}</div>
+                        </div>
+                    </div>
+                    <div class="input-panel__group--alternative">
+                        <label>Defensa</label>
+                        <div class="input-panel__range-container">
+                            <input class="input-panel__range" type="range" min="0" max="100" step="1" formControlName="deffense" />
+                            <div>{{deffenseValue}}</div>
+                        </div>
+                    </div>
+                    <div class="input-panel__group--alternative">
+                        <label>Skill</label>
+                        <div class="input-panel__range-container">
+                            <input class="input-panel__range" type="range" min="0" max="100" step="1" formControlName="skill" />
+                            <div>{{skillValue}}</div>
+                        </div>
+                    </div>
+                    <div class="input-panel__group">
+                        <button class="input-panel__button" type="submit">{{modal!.button}}</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

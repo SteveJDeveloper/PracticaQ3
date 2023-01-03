@@ -1,21 +1,20 @@
 <div class="card">
     <div class="card__header">
-        <img class="card__img" src={{playerImg}}>
+        <img class="card__img" src={{player!.urlImg}}>
         <div class="card__name">
-            {{playerName | uppercase}}
+            {{ player! | playerFullName }}
         </div>
     </div>
     <div class="card__body">
         <div class="card__statics">
-            <div class="card__text">Ataque<br>{{playerAttack}}</div>
-            <div class="card__text">Defensa<br>{{playerDeffense}}</div>
-            <div class="card__text">Skills<br>{{playerSkill}}</div>
+            <div class="card__text">Ataque<br>{{player!.attack}}</div>
+            <div class="card__text">Defensa<br>{{player!.deffense}}</div>
+            <div class="card__text">Skills<br>{{player!.skill}}</div>
         </div>
         <div class="card__button-panel">
             <button class="card__button" (click)="editPlayer()">E</button>
-            <button class="card__button">B</button>
+            <button class="card__button" (click)="deletePlayer()" >B</button>
         </div>
     </div>
-    
 </div>
 

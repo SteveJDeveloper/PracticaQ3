@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IModal } from 'src/app/utils/interfaces/modal.interface';
+import { IPlayer } from 'src/app/utils/interfaces/player.interface';
+import { PlayerService } from 'src/app/services/players/player.service';
 
 @Component({
   selector: 'app-player-card',
@@ -7,27 +10,28 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PlayerCardComponent implements OnInit {
 
-  @Input() player?:any;
-  @Input() playerImg?: string;
-  @Input() playerName?: string;
-  @Input() playerAttack?: string;
-  @Input() playerDeffense?: string;
-  @Input() playerSkill?: string;
+  @Input() player?: IPlayer;
 
-  @Output() editEvent = new EventEmitter<any>();
+  @Output() editEvent = new EventEmitter<IModal>();
 
-  constructor() { }
+  constructor(
+    private playerService:PlayerService
+  ) { }
 
   ngOnInit(): void {
   }
 
   editPlayer(){
-    let obj = {
-      player: null,
+    let object: IModal = {
+      player: this.player,
       title: "Editar Jugador",
+      button: "Editar",
       flag: true
     }
-    this.editEvent.emit(obj);
+    this.editEvent.emit(object);
   }
 
+  deletePlayer(){
+    this.playerService.deletePlayer(this.player!);
+  }
 }
